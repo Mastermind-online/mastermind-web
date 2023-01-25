@@ -1,3 +1,3 @@
 # Mastermind
 
-I wanted to play Mastermind with my dad online and did not find any good free ones, so I built one.
+I wanted to play Mastermind online with my dad but couldn't find any good free ones, so I built one.
