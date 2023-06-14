@@ -12,7 +12,7 @@ export class OnePlayerComponent implements OnInit {
   attemptNumber: number = 1;
 
   secretCombination: string[] = [];
-  colors = ['black', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'transparent'];
+  colors = COLORS;
   clues: Array<string> = [];
 
   myColors = ['transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent']
@@ -40,6 +40,18 @@ export class OnePlayerComponent implements OnInit {
   myColor22 = ['transparent']
   myColor23 = ['transparent']
   myColor24 = ['transparent']
+  myColor25 = ['transparent']
+  myColor26 = ['transparent']
+  myColor27 = ['transparent']
+  myColor28 = ['transparent']
+  myColor29 = ['transparent']
+  myColor30 = ['transparent']
+  myColor31 = ['transparent']
+  myColor32 = ['transparent']
+  myColor33 = ['transparent']
+  myColor34 = ['transparent']
+  myColor35 = ['transparent']
+  myColor36 = ['transparent']
 
   constructor() {}
 
@@ -56,7 +68,7 @@ export class OnePlayerComponent implements OnInit {
       }
     }
 
-    console.log(this.secretCombination)
+    console.log('secret combination: ', this.secretCombination)
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -88,7 +100,9 @@ export class OnePlayerComponent implements OnInit {
     })
 
 
-    console.log(myCombination)
-    console.log(this.clues)
+    this.attemptNumber++
+
+    console.log('my combination: ', myCombination)
+    console.log('clues: ', this.clues)
   }
 }

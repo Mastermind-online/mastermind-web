@@ -1,3 +1,4 @@
+import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -10,16 +11,27 @@ export class AttemptComponent implements OnInit {
 
   clues: Array<string> = [];
 
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
+    } else {
+      event.container.data[0] = event.item.data
+      event.container.data.pop()
+      copyArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+}
+
   constructor() {
     
    }
 
   ngOnInit(): void {
-    console.log(this.attemptNumber)
-    const arrayName = 'myColor'
-    for (let i = this.attemptNumber; i < this.attemptNumber + 6; i++){
-      arrayName.concat(i.toString())
-    }
+
   }
 
 }
