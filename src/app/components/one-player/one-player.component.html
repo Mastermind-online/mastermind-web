@@ -1,3 +1,4 @@
+<!-- SECRET COMBINATION -->
 <div class="combination">
     <div class="circle circle-combination">?</div>
     <div class="circle circle-combination">?</div>
@@ -7,26 +8,32 @@
     <div class="circle circle-combination">?</div>
 </div>
 
+<!-- COLOR POOL -->
 <div 
     id="colors" 
     cdkDropList 
-    [cdkDropListData]="colors" 
+    [cdkDropListData]="colorPool" 
     [cdkDropListConnectedTo]="['myColor1', 'myColor2', 'myColor3', 'myColor4', 'myColor5', 'myColor6', 'myColor7', 'myColor8', 'myColor9', 'myColor10', 'myColor11', 'myColor12', 'myColor13', 'myColor14', 'myColor15', 'myColor16', 'myColor17', 'myColor18', 'myColor19', 'myColor20', 'myColor21', 'myColor22', 'myColor23', 'myColor24', 'myColor25', 'myColor26', 'myColor27', 'myColor28', 'myColor29', 'myColor30', 'myColor31', 'myColor32', 'myColor33', 'myColor34', 'myColor35', 'myColor36']" 
     (cdkDropListDropped)="drop($event)" 
     style="display:flex; justify-content: space-around;">
     <div 
-        *ngFor="let color of colors" 
+        *ngFor="let color of colorPool" 
         class="circle color" 
         [ngStyle]="{backgroundColor: color}"
         [cdkDragData]="color" 
         cdkDrag></div>
 </div>
+
+<!-- ATTEMPTS -->
 <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
 
     <app-attempt [attemptNumber]="0"></app-attempt>
 
+    
     <div style="margin-top: 20px; display: flex; align-items: center; justify-content: space-around;">
         1
+
+        <!-- Clues -->
         <div class="clues">
             <div class="clues-circle" [ngStyle]="{backgroundColor: clues[0]}"></div>
             <div class="clues-circle" [ngStyle]="{backgroundColor: clues[1]}"></div>
@@ -35,6 +42,8 @@
             <div class="clues-circle" [ngStyle]="{backgroundColor: clues[4]}"></div>
             <div class="clues-circle" [ngStyle]="{backgroundColor: clues[5]}"></div>
         </div>
+
+        <!-- Attempt combination -->
         <div class="attempt">
             <div
             id="myColor1"
@@ -93,6 +102,8 @@
             cdkDropListOrientation="horizontal"></div>
         </div>
     </div>
+
+    
     <div style="margin-top: 20px; display: flex; align-items: center; justify-content: space-around;">
         2
         <div class="clues">

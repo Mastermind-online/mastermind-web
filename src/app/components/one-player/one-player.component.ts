@@ -12,7 +12,7 @@ export class OnePlayerComponent implements OnInit {
   attemptNumber: number = 1;
 
   secretCombination: string[] = [];
-  colors = COLORS;
+  colorPool = COLORS;
   clues: Array<string> = [];
 
   myColors = ['transparent', 'transparent', 'transparent', 'transparent', 'transparent', 'transparent']
@@ -61,7 +61,7 @@ export class OnePlayerComponent implements OnInit {
 
   private createSecretCombination() {
     for (let index = 0; this.secretCombination.length < 6; index++) {
-      const randomItem = this.colors[Math.floor(Math.random() * 10)];
+      const randomItem = this.colorPool[Math.floor(Math.random() * 10)];
 
       if (!this.secretCombination.includes(randomItem)) {
         this.secretCombination.push(randomItem);
