@@ -27,9 +27,9 @@
 <!-- ATTEMPTS -->
 <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center;">
 
-    <app-attempt [attemptNumber]="1"></app-attempt>
-    <app-attempt [attemptNumber]="2"></app-attempt>
-    <app-attempt [attemptNumber]="3"></app-attempt>
+    <app-attempt [attemptNumber]="1" [secretCombination]="secretCombination"></app-attempt>
+    <app-attempt [attemptNumber]="2" [secretCombination]="secretCombination"></app-attempt>
+    <app-attempt [attemptNumber]="3" [secretCombination]="secretCombination"></app-attempt>
    
 </div>
 
@@ -104,4 +104,4 @@
     </div> -->
 
 
-<button (click)="checkCombination()">check</button>
+<!-- <button (click)="checkCombination()">check</button> -->
