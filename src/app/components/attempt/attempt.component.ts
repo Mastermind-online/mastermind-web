@@ -8,7 +8,6 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 })
 export class AttemptComponent implements OnInit {
   @Input() attemptNumber!: number;
-  @Input() secretCombination!: any;
 
   colorArrays: any[] = [];
   clues: Array<string> = [];
@@ -41,12 +40,12 @@ export class AttemptComponent implements OnInit {
     }
   }
 
-  checkCombination() {
-    const myCombination = this.colorArrays.map((colorArray) => colorArray.value);
+  checkCombination(secretCombination: string[]) {
+    const myCombination = this.colorArrays.map((colorArray) => colorArray.value[0]);
 
     myCombination.forEach(color => {
-      if (this.secretCombination.includes(color)) {
-        if (myCombination.indexOf(color) === this.secretCombination.indexOf(color)) {
+      if (secretCombination.includes(color)) {
+        if (myCombination.indexOf(color) === secretCombination.indexOf(color)) {
           this.clues.unshift('black')
         } else {
           this.clues.push('white')
@@ -54,9 +53,6 @@ export class AttemptComponent implements OnInit {
       }
     })
 
-    this.attemptNumber++
-
-    console.log('my combination: ', myCombination)
-    console.log('clues: ', this.clues)
+    this.attemptNumber++;
   }
 }

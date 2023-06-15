@@ -1,7 +1,8 @@
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { COLORS } from 'src/app/constants/colors';
 import { DROP_LIST_CONNECTED } from 'src/app/constants/drop-list-connected-to';
+import { AttemptComponent } from '../attempt/attempt.component';
 
 @Component({
   selector: 'app-one-player',
@@ -15,8 +16,11 @@ export class OnePlayerComponent implements OnInit {
   colorPool = COLORS;
   clues: Array<string> = [];
 
+  @ViewChildren(AttemptComponent) attemptComponents: QueryList<AttemptComponent>;
+
   ngOnInit(): void {
     this.createSecretCombination();
+    console.log(this.secretCombination)
   }
 
   private createSecretCombination() {
@@ -33,5 +37,13 @@ export class OnePlayerComponent implements OnInit {
 
   dropInColorPool(event: CdkDragDrop<string[]>) {
     moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
+  }
+
+  checkAttempt() {
+    const index = this.attemptNumber - 1;
+    const attemptToCheck = this.attemptComponents.toArray()[index];
+
+    attemptToCheck.checkCombination(this.secretCombination);
+    this.attemptNumber++;
   }
 }
