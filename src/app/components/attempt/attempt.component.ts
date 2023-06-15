@@ -52,7 +52,5 @@ export class AttemptComponent implements OnInit {
         }
       }
     })
-
-    this.attemptNumber++;
   }
 }
