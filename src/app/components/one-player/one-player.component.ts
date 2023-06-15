@@ -71,20 +71,8 @@ export class OnePlayerComponent implements OnInit {
     console.log('secret combination: ', this.secretCombination)
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    debugger
-      if (event.previousContainer === event.container) {
-        moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
-      } else {
-        event.container.data[0] = event.item.data
-        event.container.data.pop()
-        copyArrayItem(
-          event.previousContainer.data,
-          event.container.data,
-          event.previousIndex,
-          event.currentIndex,
-        );
-      }
+  dropInColorPool(event: CdkDragDrop<string[]>) {
+    moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
   }
 
   checkCombination() {
