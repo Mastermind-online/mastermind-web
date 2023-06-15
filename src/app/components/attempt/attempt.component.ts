@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-attempt',
@@ -6,20 +7,52 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./attempt.component.scss']
 })
 export class AttemptComponent implements OnInit {
-  @Input() attemptNumber: number = 0;
+  @Input() attemptNumber!: number;
 
+  colorArrays: any[] = [];
   clues: Array<string> = [];
 
-  constructor() {
-    
-   }
-
   ngOnInit(): void {
-    console.log(this.attemptNumber)
-    const arrayName = 'myColor'
-    for (let i = this.attemptNumber; i < this.attemptNumber + 6; i++){
-      arrayName.concat(i.toString())
+    this.createColorArrays();
+  }
+
+  private createColorArrays() {
+    const prefix = 'color' + this.attemptNumber;
+
+    for (let i = 0; i < 6; i++) {
+      const colorArrayName = prefix + i;
+      this.colorArrays.push( {name: colorArrayName, value: ['transparent']});
     }
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
+    } else {
+      event.container.data[0] = event.item.data
+      event.container.data.pop()
+      copyArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
+
+  checkCombination(secretCombination: string[]) {
+    const myCombination = this.colorArrays.map((colorArray) => colorArray.value[0]);
+
+    myCombination.forEach(color => {
+      if (secretCombination.includes(color)) {
+        if (myCombination.indexOf(color) === secretCombination.indexOf(color)) {
+          this.clues.unshift('black')
+        } else {
+          this.clues.push('white')
+        }
+      }
+    })
+
+    this.attemptNumber++;
+  }
 }

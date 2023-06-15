@@ -1,0 +1,58 @@
+.combination {
+    background-color: #b18387;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 30px 0;
+}
+
+.attempt {
+    background-color: #8b8b8b;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.clues {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    background-color: #b18387;
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.clues-circle {
+    border: 1px solid;
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    margin: 0 2px;
+}
+
+.circle {
+    border: 1px solid;
+    border-radius: 100%;
+    width: 25px;
+    height: 25px;
+    margin: 0 2px;
+}
+
+.circle-combination {
+    width: 35px;
+    height: 35px;
+
+}
+
+button {
+    font-size: 30px;
+    padding: 10px;
+    margin-top: 20px;
+}
