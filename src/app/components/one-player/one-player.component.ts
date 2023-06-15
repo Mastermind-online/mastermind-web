@@ -1,7 +1,7 @@
-import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { ATTEMPTS } from 'src/app/constants/attempts';
+import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, OnInit, Output } from '@angular/core';
 import { COLORS } from 'src/app/constants/colors';
+import { DROP_LIST_CONNECTED } from 'src/app/constants/drop-list-connected-to';
 
 @Component({
   selector: 'app-one-player',
@@ -10,7 +10,7 @@ import { COLORS } from 'src/app/constants/colors';
 })
 export class OnePlayerComponent implements OnInit {
   attemptNumber: number = 1;
-
+  dropListConnectedTo = DROP_LIST_CONNECTED;
   secretCombination: string[] = [];
   colorPool = COLORS;
   clues: Array<string> = [];
@@ -72,6 +72,7 @@ export class OnePlayerComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    debugger
       if (event.previousContainer === event.container) {
         moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
       } else {

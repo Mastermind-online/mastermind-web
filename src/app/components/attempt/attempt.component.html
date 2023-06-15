@@ -1,5 +1,7 @@
-<!-- <div style="margin-top: 20px; display: flex; align-items: center; justify-content: space-around;">
-    1
+<div style="margin-top: 20px; display: flex; align-items: center; justify-content: space-around;">
+
+    <p>{{attemptNumber}}</p>
+
     <div class="clues">
         <div class="clues-circle" [ngStyle]="{backgroundColor: clues[0]}"></div>
         <div class="clues-circle" [ngStyle]="{backgroundColor: clues[1]}"></div>
@@ -8,61 +10,31 @@
         <div class="clues-circle" [ngStyle]="{backgroundColor: clues[4]}"></div>
         <div class="clues-circle" [ngStyle]="{backgroundColor: clues[5]}"></div>
     </div>
+
     <div class="attempt">
-        <div
-        id="myColor1"
-        class="circle color" 
-        [ngStyle]="{backgroundColor: myColor1[0]}"
-        cdkDropList
-        [cdkDropListData]="myColor1"
-        cdkDropListConnectedTo="colors"
-        (cdkDropListDropped)="drop($event)"
-        cdkDropListOrientation="horizontal"
-        ></div>
-        <div
-        id="myColor2"
-        class="circle color" 
-        [ngStyle]="{backgroundColor: myColor2[0]}"
-        cdkDropList
-        [cdkDropListData]="myColor2"
-        cdkDropListConnectedTo="colors"
-        (cdkDropListDropped)="drop($event)"
-        cdkDropListOrientation="horizontal"></div>
-        <div
-        id="myColor3"
-        class="circle color" 
-        [ngStyle]="{backgroundColor: myColor3[0]}"
-        cdkDropList
-        [cdkDropListData]="myColor3"
-        cdkDropListConnectedTo="colors"
-        (cdkDropListDropped)="drop($event)"
-        cdkDropListOrientation="horizontal"></div>
-        <div
-        id="myColor4"
-        class="circle color" 
-        [ngStyle]="{backgroundColor: myColor4[0]}"
-        cdkDropList
-        [cdkDropListData]="myColor4"
-        cdkDropListConnectedTo="colors"
-        (cdkDropListDropped)="drop($event)"
-        cdkDropListOrientation="horizontal"></div>
-        <div
-        id="myColor5"
-        class="circle color" 
-        [ngStyle]="{backgroundColor: myColor5[0]}"
-        cdkDropList
-        [cdkDropListData]="myColor5"
-        cdkDropListConnectedTo="colors"
-        (cdkDropListDropped)="drop($event)"
-        cdkDropListOrientation="horizontal"></div>
-        <div
-        id="myColor6"
-        class="circle color" 
-        [ngStyle]="{backgroundColor: myColor6[0]}"
-        cdkDropList
-        [cdkDropListData]="myColor6"
-        cdkDropListConnectedTo="colors"
-        (cdkDropListDropped)="drop($event)"
-        cdkDropListOrientation="horizontal"></div>
+        <div id="{{colorArrays[0].name}}" class="circle color" [ngStyle]="{backgroundColor: colorArrays[0].value[0]}"
+            cdkDropList [cdkDropListData]="colorArrays[0].value" cdkDropListConnectedTo="colorPool"
+            (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal"></div>
+
+        <div id="{{colorArrays[1].name}}" class="circle color" [ngStyle]="{backgroundColor: colorArrays[1].value[0]}"
+            cdkDropList [cdkDropListData]="colorArrays[1].value" cdkDropListConnectedTo="colorPool"
+            (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal"></div>
+
+        <div id="{{colorArrays[2].name}}" class="circle color" [ngStyle]="{backgroundColor: colorArrays[2].value[0]}"
+            cdkDropList [cdkDropListData]="colorArrays[2].value" cdkDropListConnectedTo="colorPool"
+            (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal"></div>
+
+        <div id="{{colorArrays[3].name}}" class="circle color" [ngStyle]="{backgroundColor: colorArrays[3].value[0]}"
+            cdkDropList [cdkDropListData]="colorArrays[3].value" cdkDropListConnectedTo="colorPool"
+            (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal"></div>
+
+        <div id="{{colorArrays[4].name}}" class="circle color" [ngStyle]="{backgroundColor: colorArrays[4].value[0]}"
+            cdkDropList [cdkDropListData]="colorArrays[4].value" cdkDropListConnectedTo="colorPool"
+            (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal"></div>
+
+        <div id="{{colorArrays[5].name}}" class="circle color" [ngStyle]="{backgroundColor: colorArrays[5].value[0]}"
+            cdkDropList [cdkDropListData]="colorArrays[5].value" cdkDropListConnectedTo="colorPool"
+            (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal"></div>
+
     </div>
-</div> -->
+</div>

@@ -7,9 +7,22 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./attempt.component.scss']
 })
 export class AttemptComponent implements OnInit {
-  @Input() attemptNumber: number = 0;
-
+  @Input() attemptNumber!: number;
+  colorArrays: any[] = [];
   clues: Array<string> = [];
+
+  ngOnInit(): void {
+    this.createColorArrays();
+  }
+
+  private createColorArrays() {
+    const prefix = 'color' + this.attemptNumber;
+
+    for (let i = 0; i < 6; i++) {
+      const colorArrayName = prefix + i;
+      this.colorArrays.push( {name: colorArrayName, value: ['transparent']});
+    }
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -24,14 +37,5 @@ export class AttemptComponent implements OnInit {
         event.currentIndex,
       );
     }
-}
-
-  constructor() {
-    
-   }
-
-  ngOnInit(): void {
-
   }
-
 }
