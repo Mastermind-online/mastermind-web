@@ -20,7 +20,6 @@ export class OnePlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.createSecretCombination();
-    console.log(this.secretCombination)
   }
 
   private createSecretCombination() {
@@ -32,7 +31,7 @@ export class OnePlayerComponent implements OnInit {
       }
     }
 
-    console.log('secret combination: ', this.secretCombination)
+    console.info('secret combination: ', this.secretCombination);
   }
 
   dropInColorPool(event: CdkDragDrop<string[]>) {

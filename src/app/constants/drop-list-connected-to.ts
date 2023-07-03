@@ -29,4 +29,4 @@ export const DROP_LIST_CONNECTED = [
     'color53',
     'color54',
     'color55',
-]
+];
