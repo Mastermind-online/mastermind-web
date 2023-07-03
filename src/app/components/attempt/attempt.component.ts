@@ -29,8 +29,8 @@ export class AttemptComponent implements OnInit {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
     } else {
-      event.container.data[0] = event.item.data
-      event.container.data.pop()
+      event.container.data[0] = event.item.data;
+      event.container.data.pop();
       copyArrayItem(
         event.previousContainer.data,
         event.container.data,
@@ -46,11 +46,11 @@ export class AttemptComponent implements OnInit {
     myCombination.forEach(color => {
       if (secretCombination.includes(color)) {
         if (myCombination.indexOf(color) === secretCombination.indexOf(color)) {
-          this.clues.unshift('black')
+          this.clues.unshift('black');
         } else {
-          this.clues.push('white')
+          this.clues.push('white');
         }
       }
-    })
+    });
   }
 }
