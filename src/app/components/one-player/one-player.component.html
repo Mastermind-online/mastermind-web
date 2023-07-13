@@ -27,17 +27,17 @@
 <!-- ATTEMPTS -->
 <div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; margin-top: 20px;">
 
-    <app-attempt [attemptNumber]="1"></app-attempt>
-    <app-attempt [attemptNumber]="2"></app-attempt>
-    <app-attempt [attemptNumber]="3"></app-attempt>
-    <app-attempt [attemptNumber]="4"></app-attempt>
-    <app-attempt [attemptNumber]="5"></app-attempt>
-    <app-attempt [attemptNumber]="6"></app-attempt>
-    <app-attempt [attemptNumber]="7"></app-attempt>
-    <app-attempt [attemptNumber]="8"></app-attempt>
-    <app-attempt [attemptNumber]="9"></app-attempt>
-    <app-attempt [attemptNumber]="10"></app-attempt>
+    <app-attempt [attemptNumber]="1" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="2" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="3" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="4" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="5" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="6" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="7" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="8" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="9" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
+    <app-attempt [attemptNumber]="10" (emitEnableCheck)="handleButtonEnable($event)"></app-attempt>
    
 </div>
 
-<button (click)="checkAttempt()">check</button>
+<button (click)="checkAttempt()" [disabled]="!isCombinationReady">check number {{attemptNumber}}</button>

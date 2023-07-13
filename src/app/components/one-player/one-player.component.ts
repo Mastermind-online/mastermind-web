@@ -13,6 +13,7 @@ export class OnePlayerComponent implements OnInit {
   attemptNumber: number = 1;
   dropListConnectedTo = DROP_LIST_CONNECTED;
   secretCombination: string[] = [];
+  isCombinationReady = false;
   colorPool = COLORS;
   clues: Array<string> = [];
 
@@ -38,11 +39,16 @@ export class OnePlayerComponent implements OnInit {
     moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
   }
 
+  handleButtonEnable(event: boolean) {
+    this.isCombinationReady = event;
+  }
+
   checkAttempt() {
     const index = this.attemptNumber - 1;
     const attemptToCheck = this.attemptComponents.toArray()[index];
 
     attemptToCheck.checkCombination(this.secretCombination);
     this.attemptNumber++;
+    this.isCombinationReady = false;
   }
 }
