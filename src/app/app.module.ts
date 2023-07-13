@@ -10,13 +10,15 @@ import { MatList, MatListItem } from '@angular/material/list';
 import { AngularMaterialModule } from 'src/angular-material.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AttemptComponent } from './components/attempt/attempt.component';
+import { TwoPlayersComponent } from './components/two-players/two-players.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     OnePlayerComponent,
-    AttemptComponent
+    AttemptComponent,
+    TwoPlayersComponent
   ],
   imports: [
     BrowserModule,
