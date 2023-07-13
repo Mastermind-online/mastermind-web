@@ -1,5 +1,5 @@
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-attempt',
@@ -8,6 +8,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 })
 export class AttemptComponent implements OnInit {
   @Input() attemptNumber!: number;
+  @Output() emitEnableCheck: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   colorArrays: any[] = [];
   clues: Array<string> = [];
@@ -38,6 +39,15 @@ export class AttemptComponent implements OnInit {
         event.currentIndex,
       );
     }
+    
+    this.isCombinationReady();
+  }
+
+  private isCombinationReady() {
+    const myCombination = this.colorArrays.map((colorArray) => colorArray.value[0]);
+    const combinationStatus = new Set(myCombination).size === myCombination.length;
+    
+    this.emitEnableCheck.emit(combinationStatus);
   }
 
   checkCombination(secretCombination: string[]) {
