@@ -50,6 +50,7 @@ export class OnePlayerComponent implements OnInit {
 
     attemptToCheck.checkCombination(this.secretCombination);
     this.attemptNumber++;
+    this.dropListConnectedTo.splice(0, 6);
     this.isCombinationReady = false;
   }
 }
