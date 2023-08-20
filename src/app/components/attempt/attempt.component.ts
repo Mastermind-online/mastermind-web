@@ -1,5 +1,6 @@
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
 
 @Component({
   selector: 'app-attempt',
@@ -20,7 +21,7 @@ export class AttemptComponent implements OnInit {
   private createColorArrays() {
     const prefix = 'color' + this.attemptNumber;
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < COMBINATION_NUMBER; i++) {
       const colorArrayName = prefix + i;
       this.colorArrays.push( {name: colorArrayName, value: ['transparent']});
     }

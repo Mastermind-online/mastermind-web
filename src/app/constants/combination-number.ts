@@ -1,0 +1,1 @@
+export const COMBINATION_NUMBER = 5;

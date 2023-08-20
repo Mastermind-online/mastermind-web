@@ -3,6 +3,7 @@ import { Component, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@
 import { COLORS } from 'src/app/constants/colors';
 import { DROP_LIST_CONNECTED } from 'src/app/constants/drop-list-connected-to';
 import { AttemptComponent } from '../attempt/attempt.component';
+import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
 
 @Component({
   selector: 'app-one-player',
@@ -24,7 +25,7 @@ export class OnePlayerComponent implements OnInit {
   }
 
   private createSecretCombination() {
-    for (let index = 0; this.secretCombination.length < 6; index++) {
+    for (let index = 0; this.secretCombination.length < COMBINATION_NUMBER; index++) {
       const randomItem = this.colorPool[Math.floor(Math.random() * 10)];
 
       if (!this.secretCombination.includes(randomItem)) {
