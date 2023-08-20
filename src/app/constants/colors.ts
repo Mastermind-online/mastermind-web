@@ -1,3 +1,3 @@
 export const COLORS = [
-    'DimGray', 'IndianRed', 'Khaki', 'DarkSeaGreen', 'LightBlue', 'Pink', 'White', 'Transparent'
+    'DimGray', 'Pink', 'LightSalmon', 'Khaki', 'DarkSeaGreen', 'LightBlue', 'White', 'Transparent'
 ];

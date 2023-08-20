@@ -17,6 +17,7 @@ export class OnePlayerComponent implements OnInit {
   isCombinationReady = false;
   colorPool = COLORS;
   clues: Array<string> = [];
+  isCombinationCorrect: boolean = false;
 
   @ViewChildren(AttemptComponent) attemptComponents: QueryList<AttemptComponent>;
 
@@ -52,5 +53,9 @@ export class OnePlayerComponent implements OnInit {
     this.attemptNumber++;
     this.dropListConnectedTo.splice(0, 6);
     this.isCombinationReady = false;
+  }
+
+  handleCorrectCombination(event: boolean) {
+    this.isCombinationCorrect = event;
   }
 }
