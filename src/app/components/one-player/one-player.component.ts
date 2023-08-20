@@ -26,7 +26,7 @@ export class OnePlayerComponent implements OnInit {
 
   private createSecretCombination() {
     for (let index = 0; this.secretCombination.length < COMBINATION_NUMBER; index++) {
-      const randomItem = this.colorPool[Math.floor(Math.random() * 10)];
+      const randomItem = this.colorPool[Math.floor(Math.random() * this.colorPool.length)];
 
       if (!this.secretCombination.includes(randomItem)) {
         this.secretCombination.push(randomItem);
