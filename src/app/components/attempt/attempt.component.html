@@ -8,7 +8,6 @@
         <div class="clues-circle" [ngStyle]="{backgroundColor: clues[2]}"></div>
         <div class="clues-circle" [ngStyle]="{backgroundColor: clues[3]}"></div>
         <div class="clues-circle" [ngStyle]="{backgroundColor: clues[4]}"></div>
-        <div class="clues-circle" [ngStyle]="{backgroundColor: clues[5]}"></div>
     </div>
 
     <div class="attempt">
@@ -31,10 +30,5 @@
         <div id="{{colorArrays[4].name}}" class="circle color" [ngStyle]="{backgroundColor: colorArrays[4].value[0]}"
             cdkDropList [cdkDropListData]="colorArrays[4].value" cdkDropListConnectedTo="colorPool"
             (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal"></div>
-
-        <div id="{{colorArrays[5].name}}" class="circle color" [ngStyle]="{backgroundColor: colorArrays[5].value[0]}"
-            cdkDropList [cdkDropListData]="colorArrays[5].value" cdkDropListConnectedTo="colorPool"
-            (cdkDropListDropped)="drop($event)" cdkDropListOrientation="horizontal"></div>
-
     </div>
 </div>
