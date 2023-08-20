@@ -23,7 +23,7 @@ export class AttemptComponent implements OnInit {
 
     for (let i = 0; i < COMBINATION_NUMBER; i++) {
       const colorArrayName = prefix + i;
-      this.colorArrays.push( {name: colorArrayName, value: ['transparent']});
+      this.colorArrays.push( {name: colorArrayName, value: ['Transparent']});
     }
   }
 
