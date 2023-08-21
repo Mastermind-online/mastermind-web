@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { OnePlayerComponent } from './components/one-player/one-player.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatList, MatListItem } from '@angular/material/list';
 import { AngularMaterialModule } from 'src/angular-material.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AttemptComponent } from './components/attempt/attempt.component';
 import { TwoPlayersComponent } from './components/two-players/two-players.component';
+import { RulesModalComponent } from './components/rules-modal/rules-modal.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,8 @@ import { TwoPlayersComponent } from './components/two-players/two-players.compon
     HomeComponent,
     OnePlayerComponent,
     AttemptComponent,
-    TwoPlayersComponent
+    TwoPlayersComponent,
+    RulesModalComponent
   ],
   imports: [
     BrowserModule,
