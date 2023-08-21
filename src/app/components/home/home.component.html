@@ -8,4 +8,8 @@
         <button routerLink="/one-player" routerLinkActive="active" class="one-player-button">1 player</button>
         <button routerLink="/two-players" routerLinkActive="active">2 players</button>
     </div>
+
+    <button (click)="modal.openRules()" class="rules-button">How to play</button>
+    <app-rules-modal #modal></app-rules-modal>
+
 </div>

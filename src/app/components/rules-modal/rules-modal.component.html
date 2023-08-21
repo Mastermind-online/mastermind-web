@@ -1,0 +1,13 @@
+<div class="rules-modal" *ngIf="showRules">
+  <div class="modal-content">
+    <h2>How to play</h2>
+    <p>Mastermind is a classic code-breaking game for two players. The <b>code maker</b> creates a secret code and the <b>code breaker</b> has to guess the code within a limited number of attempts.</p>
+        <hr>
+        <p>The <b>code breaker</b> makes their first guess by selecting a sequence of colored pegs and placing them in a row on their side of the game board.</p>
+        <p>The <b>code maker</b> then provides feedback to the <b>code breaker</b> in the form of smaller pegs:</p>
+        <p>- Black peg: Indicates that a guessed peg is both the correct color and in the correct position.</p>
+        <p>- White peg: Indicates that a guessed peg is the correct color but in the wrong position.</p>
+        <p>The <b>code breaker</b> has to use this feedback to refine their subsequent guesses until they guess the correct combination, or they run out of attempts.</p>
+    <button (click)="closeRules()">Close</button>
+  </div>
+</div>
