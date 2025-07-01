@@ -1,0 +1,83 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.combination {
+    background-color: #b18387;
+    border-radius: 10px;
+    border: 1px solid snow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.attempt {
+    background-color: #8b8b8b;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.clues {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #b18387;
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.clues-circle {
+    border: 1px solid;
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    margin: 0 2px;
+}
+
+.circle {
+    border: 1px solid;
+    border-radius: 100%;
+    width: 27px;
+    height: 27px;
+    margin: 0 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.circle:hover {
+    color: #fcfcfc;
+}
+
+.circle-combination {
+    width: 35px;
+    height: 35px;
+}
+
+button {
+  padding: 12px;
+  font-size: 16px;
+    color: #8b8b8b;
+  border: 1px solid #8b8b8b;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.title {
+  color: #b18387;
+  font-size: 24px;
+  margin-bottom: 16px;
+}

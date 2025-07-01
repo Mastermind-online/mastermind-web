@@ -1,45 +1,4 @@
 
 <div class="container">
-<h2 class="title" *ngIf="room">Room: {{room}}</h2>
-<!-- SECRET COMBINATION -->
-<div class="combination">
-    <div class="circle circle-combination" [ngStyle]="{backgroundColor: isCombinationCorrect ? secretCombination[0] : 'transparent'}" [textContent]="isCombinationCorrect ? '' : '?'"></div>
-    <div class="circle circle-combination" [ngStyle]="{backgroundColor: isCombinationCorrect ? secretCombination[1] : 'transparent'}" [textContent]="isCombinationCorrect ? '' : '?'"></div>
-    <div class="circle circle-combination" [ngStyle]="{backgroundColor: isCombinationCorrect ? secretCombination[2] : 'transparent'}" [textContent]="isCombinationCorrect ? '' : '?'"></div>
-    <div class="circle circle-combination" [ngStyle]="{backgroundColor: isCombinationCorrect ? secretCombination[3] : 'transparent'}" [textContent]="isCombinationCorrect ? '' : '?'"></div>
-    <div class="circle circle-combination" [ngStyle]="{backgroundColor: isCombinationCorrect ? secretCombination[4] : 'transparent'}" [textContent]="isCombinationCorrect ? '' : '?'"></div>
-</div>
-
-<!-- COLOR POOL -->
-<div 
-    id="colorPool" 
-    cdkDropList 
-    [cdkDropListData]="colorPool" 
-    [cdkDropListConnectedTo]="dropListConnectedTo" 
-    (cdkDropListDropped)="dropInColorPool($event)" 
-    style="display:flex; justify-content: space-around;">
-    <div 
-        *ngFor="let color of colorPool" 
-        class="circle color" 
-        [ngStyle]="{backgroundColor: color}"
-        [cdkDragData]="color" 
-        cdkDrag></div>
-</div>
-
-<!-- ATTEMPTS -->
-<div style="display: flex; flex-direction: column; gap: 5px; justify-content: space-around; align-items: center; margin-top: 20px;">
-
-    <app-attempt [attemptNumber]="1" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-    <app-attempt [attemptNumber]="2" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-    <app-attempt [attemptNumber]="3" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-    <app-attempt [attemptNumber]="4" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-    <app-attempt [attemptNumber]="5" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-    <app-attempt [attemptNumber]="6" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-    <app-attempt [attemptNumber]="7" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-    <app-attempt [attemptNumber]="8" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-    <app-attempt [attemptNumber]="9" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
-   
-</div>
-
-<button (click)="checkAttempt()" [disabled]="!isCombinationReady" [matTooltip]="isCombinationReady ? '' : 'The combination is not ready!'">check attempt: {{attemptNumber}}</button>
+<app-code-breaker></app-code-breaker>
 </div>

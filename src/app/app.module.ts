@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { CodeMasterComponent } from './components/code-master/code-master.component';
+import { CodeBreakerComponent } from './components/code-breaker/code-breaker.component';
+import { SelectRoleComponent } from './components/select-role/select-role.component';
+import { CreateCombinationComponent } from './components/create-combination/create-combination.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { CodeMasterComponent } from './components/code-master/code-master.compon
     AttemptComponent,
     TwoPlayersComponent,
     RulesModalComponent,
-    CodeMasterComponent
+    CodeMasterComponent,
+    CodeBreakerComponent,
+    SelectRoleComponent,
+    CreateCombinationComponent
   ],
   imports: [
     BrowserModule,
