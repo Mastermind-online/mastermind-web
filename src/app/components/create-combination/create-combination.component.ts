@@ -11,7 +11,7 @@ import { SocketService } from 'src/app/services/socket.service';
   standalone: false
 })
 export class CreateCombinationComponent implements OnInit {
-  constructor(private readonly socketService: SocketService, private readonly router: Router) {}
+  constructor(private readonly router: Router) {}
 
   colorPool = COLORS;
   secretCombo = [];

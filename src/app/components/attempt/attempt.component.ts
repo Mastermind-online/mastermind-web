@@ -12,6 +12,7 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class AttemptComponent implements OnInit {
   @Input() attemptNumber!: number;
+  @Input() room!: string;
   @Output() emitEnableCheck: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() emitCorrect: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -37,7 +38,9 @@ export class AttemptComponent implements OnInit {
   drop(event: CdkDragDrop<string[]>) {
     console.log('color: ', event.item.data)
     console.log('containerID: ', event.container.id)
-    this.socketService.dropColor('mismuelas', event.item.data, event.container.id)
+    if (this.room) {
+      this.socketService.dropColor('mismuelas', event.item.data, event.container.id)
+    }
     
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
