@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-two-players',
@@ -10,13 +11,13 @@ import { FormControl } from '@angular/forms';
 export class TwoPlayersComponent {
   roomId = new FormControl();
 
-  constructor() { }
+  constructor(private readonly router: Router) { }
 
   joinRoom() {
     console.log(this.roomId.value)
   }
 
   createRoom() {
-    
+    this.router.navigate(['/one-player'], { fragment: 'mismuelas' })
   }
 }

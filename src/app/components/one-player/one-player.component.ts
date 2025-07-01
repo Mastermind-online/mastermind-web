@@ -1,9 +1,10 @@
 import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { COLORS } from 'src/app/constants/colors';
 import { DROP_LIST_CONNECTED } from 'src/app/constants/drop-list-connected-to';
 import { AttemptComponent } from '../attempt/attempt.component';
 import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-one-player',
@@ -11,7 +12,7 @@ import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
   styleUrls: ['./one-player.component.scss'],
   standalone: false
 })
-export class OnePlayerComponent implements OnInit {
+export class OnePlayerComponent implements OnInit, OnDestroy {
   attemptNumber: number = 1;
   dropListConnectedTo = DROP_LIST_CONNECTED;
   secretCombination: string[] = [];
@@ -19,11 +20,19 @@ export class OnePlayerComponent implements OnInit {
   colorPool = COLORS;
   clues: Array<string> = [];
   isCombinationCorrect: boolean = false;
+  room = 'mismuelas';
 
   @ViewChildren(AttemptComponent) attemptComponents: QueryList<AttemptComponent>;
 
+  constructor(private readonly socketService: SocketService) {}
+
   ngOnInit(): void {
     this.createSecretCombination();
+    this.joinRoom();
+  }
+
+  ngOnDestroy(): void {
+    this.socketService.leaveRoom(this.room)
   }
 
   private createSecretCombination() {
@@ -58,5 +67,11 @@ export class OnePlayerComponent implements OnInit {
 
   handleCorrectCombination(event: boolean) {
     this.isCombinationCorrect = event;
+  }
+  
+  private joinRoom(): void {
+    if (this.room.trim()) {
+      this.socketService.joinRoom(this.room);
+    }
   }
 }

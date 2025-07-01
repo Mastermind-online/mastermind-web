@@ -13,6 +13,8 @@ import { TwoPlayersComponent } from './components/two-players/two-players.compon
 import { RulesModalComponent } from './components/rules-modal/rules-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { CodeMasterComponent } from './components/code-master/code-master.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     OnePlayerComponent,
     AttemptComponent,
     TwoPlayersComponent,
-    RulesModalComponent
+    RulesModalComponent,
+    CodeMasterComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     DragDropModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

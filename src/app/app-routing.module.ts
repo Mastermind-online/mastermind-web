@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { OnePlayerComponent } from './components/one-player/one-player.component';
 import { TwoPlayersComponent } from './components/two-players/two-players.component';
+import { CodeMasterComponent } from './components/code-master/code-master.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'one-player', component: OnePlayerComponent },
   { path: 'two-players', component: TwoPlayersComponent },
+  { path: 'code-master', component: CodeMasterComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];

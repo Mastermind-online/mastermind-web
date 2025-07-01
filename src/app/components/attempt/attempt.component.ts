@@ -2,6 +2,7 @@ import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-d
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { every } from 'rxjs';
 import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-attempt',
@@ -18,6 +19,8 @@ export class AttemptComponent implements OnInit {
   clues: Array<string> = [];
   isCombinationCorrect: boolean = false;
 
+  constructor(private readonly socketService: SocketService) {}
+
   ngOnInit(): void {
     this.createColorArrays();
   }
@@ -32,6 +35,10 @@ export class AttemptComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
+    console.log('color: ', event.item.data)
+    console.log('containerID: ', event.container.id)
+    this.socketService.dropColor('mismuelas', event.item.data, event.container.id)
+    
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
     } else {
