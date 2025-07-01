@@ -1,51 +1,26 @@
 <div class="container">
-  <div class="card">
-    <h2 class="title">You're the code master!</h2>
-    <p>create the combination</p>
+    <div class="card">
+        <h2 class="title">You're the code master!</h2>
+        <p class="subtitle">Create the combination to get a room ID:</p>
+        <div cdkDropList #colorPoolList="cdkDropList" [cdkDropListData]="colorPool"
+            [cdkDropListConnectedTo]="[secretCombinationList]" (cdkDropListDropped)="drop($event)"
+            cdkDropListOrientation="horizontal" style="display:flex; justify-content: space-around;">
+            <div *ngFor="let color of colorPool" class="circle color" [ngStyle]="{backgroundColor: color}" cdkDrag></div>
+        </div>
 
-    
+        <div class="combination-div">
+            <div cdkDropList #secretCombinationList="cdkDropList" [cdkDropListData]="secretCombo"
+                [cdkDropListConnectedTo]="[colorPoolList]" cdkDropListOrientation="horizontal" class="combination"
+                (cdkDropListDropped)="drop($event)">
+                <div *ngFor="let secretColor of secretCombo" class="circle color" [ngStyle]="{backgroundColor: secretColor}"cdkDrag></div>
+            </div>
+            <button (click)="ready()">Ready!</button>
+        </div>
+    </div>
 
-<!-- COLOR POOL -->
-<div 
-    cdkDropList 
-    #colorPoolList="cdkDropList"
-    [cdkDropListData]="colorPool" 
-    [cdkDropListConnectedTo]="[secretComboList]" 
-    (cdkDropListDropped)="dropInColorPool($event)" 
-    style="display:flex; justify-content: space-around;">
-    <div 
-        *ngFor="let color of colorPool" 
-        class="circle color" 
-        [ngStyle]="{backgroundColor: color}"
-        [cdkDragData]="color" 
-        cdkDrag></div>
-</div>
-
-<div 
-    cdkDropList 
-    #secretComboList="cdkDropList"
-    [cdkDropListData]="secretCombo" 
-    [cdkDropListConnectedTo]="[colorPoolList]" 
-    (cdkDropListDropped)="dropInSecretCombo($event)"
-    class="combination">
-    
-    <div class="combination" >
-
-    <div 
-        *ngFor="let color of secretCombo" 
-        class="circle color" 
-        [ngStyle]="{backgroundColor: color}"
-        [cdkDragData]="color" 
-        cdkDrag
-        class="circle circle-combination"></div>
-
-</div>
-
-</div>
 
     <div *ngFor="let attempt of attempts">
         <p>color: {{attempt.color}}</p>
         <p>container: {{attempt.container}}</p>
     </div>
-  </div>
 </div>

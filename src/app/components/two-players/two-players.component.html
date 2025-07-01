@@ -1,15 +1,17 @@
 <div class="container">
   <div class="card">
-    <h2 class="title">Play against a friend!</h2>
+    <h2 class="title">Choose your role!</h2>
 
     <div class="section">
-      <p class="section-title">Join a Room</p>
+      <p class="section-title">Code Breaker</p>
+      <div class="code-breaker-section">
       <input matInput [formControl]="roomId" class="input" placeholder="Enter Room ID"/>
       <button class="join-button" (click)="joinRoom()">Join Room</button>
+      </div>
     </div>
 
     <div class="section">
-      <p class="section-title">Or</p>
+      <p class="section-title">Code Master</p>
       <button class="create-button" (click)="createRoom()">Create New Room</button>
     </div>
   </div>

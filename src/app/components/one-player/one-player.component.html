@@ -1,4 +1,6 @@
+
 <div class="container">
+<h2 class="title" *ngIf="room">Room: {{room}}</h2>
 <!-- SECRET COMBINATION -->
 <div class="combination">
     <div class="circle circle-combination" [ngStyle]="{backgroundColor: isCombinationCorrect ? secretCombination[0] : 'transparent'}" [textContent]="isCombinationCorrect ? '' : '?'"></div>

@@ -18,6 +18,6 @@ export class TwoPlayersComponent {
   }
 
   createRoom() {
-    this.router.navigate(['/one-player'], { fragment: 'mismuelas' })
+    this.router.navigate(['/code-master'], { fragment: 'mismuelas' })
   }
 }

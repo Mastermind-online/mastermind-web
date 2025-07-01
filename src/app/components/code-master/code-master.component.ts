@@ -1,8 +1,7 @@
-import { CdkDragDrop, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { every } from 'rxjs';
+import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { COLORS } from 'src/app/constants/colors';
-import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
@@ -12,16 +11,15 @@ import { SocketService } from 'src/app/services/socket.service';
   standalone: false
 })
 export class CodeMasterComponent implements OnInit {
-  constructor(private readonly socketService: SocketService) {}
+  constructor(private readonly socketService: SocketService, private readonly router: Router) {}
 
   attempts: {color: string, container: string}[] = []
-  room = 'mismuelas'
   colorPool = COLORS;
-  secretCombo = ['Transparent', 'Transparent', 'Transparent', 'Transparent', 'Transparent']
+  secretCombo = [];
+
 
   ngOnInit(): void {
     this.subscribeToColorChanges();
-    this.joinRoom();
   }
 
   private subscribeToColorChanges() {
@@ -31,30 +29,24 @@ export class CodeMasterComponent implements OnInit {
     })
   }
 
-  private joinRoom(): void {
-    if (this.room.trim()) {
-      this.socketService.joinRoom(this.room);
-    }
-  }
-
   dropInColorPool(event: CdkDragDrop<string[]>) {
     moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
   }
 
-  dropInSecretCombo(event: any) {
-    
+  drop(event: any) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
-      event.container.data[0] = event.item.data;
-      event.container.data.pop();
-      copyArrayItem(
+      transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
         event.currentIndex,
       );
     }
+  }
 
+  ready() {
+    this.router.navigate(['/one-player'])
   }
 }
