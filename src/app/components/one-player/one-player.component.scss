@@ -1,6 +1,15 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .combination {
     background-color: #b18387;
     border-radius: 10px;
+    border: 1px solid snow;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -22,7 +31,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: white;
     background-color: #b18387;
     border-radius: 10px;
     margin: 0 10px;
@@ -43,6 +51,14 @@
     width: 27px;
     height: 27px;
     margin: 0 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.circle:hover {
+    color: #fcfcfc;
 }
 
 .circle-combination {
@@ -51,7 +67,11 @@
 }
 
 button {
-    font-size: 30px;
-    padding: 10px;
-    margin-top: 20px;
+  padding: 12px;
+  font-size: 16px;
+    color: #8b8b8b;
+  border: 1px solid #8b8b8b;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 20px;
 }

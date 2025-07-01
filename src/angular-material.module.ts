@@ -16,12 +16,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatListModule } from '@angular/material/list';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const modules: any[] = [
-    MatListModule,
-
+  MatListModule,
   LayoutModule,
-
   MatAutocompleteModule,
   MatCheckboxModule,
   MatDatepickerModule,
@@ -31,6 +30,8 @@ const modules: any[] = [
   MatSelectModule,
   MatSliderModule,
   MatSlideToggleModule,
+  MatTooltipModule
+  
 ];
 
 @NgModule({

@@ -1,51 +1,96 @@
-.home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 500px;
+
+/* home.component.css */
+.container {
+  /* Full viewport height with gradient background */
+  min-height: 100vh;
+  
+  /* Center content vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Retro monospace font */
+  font-family: monospace;
+
+  padding: 16px;
 }
 
-.intro {
-    margin-top: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+.card {
+  /* Card styling */
+  background-color: #DECCD6;
+  border: 2px solid #b18387;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  color: #985f63;
+   text-shadow: 4px 4px 5px #1111114c;;
+
+
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  color: #8b8b8b;
+  font-size: 18px;
+  margin-bottom: 24px;
 }
 
 .buttons {
-    margin-top: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
 }
 
-button {
-    font-size: 30px;
-    padding: 20px;
+.game-types-div {
+    display: flex;
+    gap: 20px;
+    text-shadow: 1px 1px 3px #888;
+
 }
 
-.one-player-button {
-    margin-right: 30px;
+.game-type-button {
+ width: 100%;
+  padding: 12px;
+  font-size: 16px;
+
+  border: 1px solid whitesmoke;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-@media (max-width: 500px) {
-    .buttons {
-        display: flex;
-        flex-direction: column;
-    }
 
-    .one-player-button {
-        margin-bottom: 30px;
-        margin-right: 0;
-    }
+.single-player-button {
+    color: white;
+
+
+   background-color: #827e7e;
+    
 }
 
-p {
-    font-size: 24px;
+.two-players-button {
+  color: white;
+    
+   background-color: #565252;
+
 }
 
 .rules-button {
-    background-color: #888;
-    margin-top: 60px;
-    font-size: 15px;
-    padding: 10px;
-    color: white;
+  color: white;
+  background-color: #b18387;
+}
+
+
+
+.game-type-button:hover {
+  background-color: #a17276;
 }

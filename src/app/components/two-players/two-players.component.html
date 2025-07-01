@@ -1,7 +1,16 @@
-Play against a friend!
+<div class="container">
+  <div class="card">
+    <h2 class="title">Play against a friend!</h2>
 
-<button>Create a room</button>
-<button>Join a room</button>
+    <div class="section">
+      <p class="section-title">Join a Room</p>
+      <input matInput [formControl]="roomId" class="input"/>
+      <button class="join-button" (click)="joinRoom()">Join Room</button>
+    </div>
 
-<!-- <input type="text" placeholder="Enter your name"/>
-<input type="text" placeholder="Enter your name"/> -->
+    <div class="section">
+      <p class="section-title">Or</p>
+      <button class="create-button" (click)="createRoom()">Create New Room</button>
+    </div>
+  </div>
+</div>

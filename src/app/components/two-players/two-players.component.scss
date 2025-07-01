@@ -1,4 +1,73 @@
-button {
-    font-size: 20px;
-    padding: 10px;
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  padding: 16px;
+}
+
+.card {
+  background-color: #DECCD6;
+  border: 2px solid #b18387;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  color: #b18387;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.section-title {
+  color: #8b8b8b;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.input {
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 2px solid #8b8b8b;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.join-button, .create-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.join-button {
+  background-color: #8b8b8b;
+  color: white;
+}
+
+.join-button:hover {
+  background-color: #888;
+}
+
+.create-button {
+  background-color: #b18387;
+  color: white;
+}
+
+.create-button:hover {
+  background-color: #a17276;
 }

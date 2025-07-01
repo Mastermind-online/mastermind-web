@@ -1,3 +1,4 @@
+<div class="container">
 <!-- SECRET COMBINATION -->
 <div class="combination">
     <div class="circle circle-combination" [ngStyle]="{backgroundColor: isCombinationCorrect ? secretCombination[0] : 'transparent'}" [textContent]="isCombinationCorrect ? '' : '?'"></div>
@@ -24,7 +25,7 @@
 </div>
 
 <!-- ATTEMPTS -->
-<div style="display: flex; flex-direction: column; justify-content: space-around; align-items: center; margin-top: 20px;">
+<div style="display: flex; flex-direction: column; gap: 5px; justify-content: space-around; align-items: center; margin-top: 20px;">
 
     <app-attempt [attemptNumber]="1" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
     <app-attempt [attemptNumber]="2" (emitEnableCheck)="handleButtonEnable($event)" (emitCorrect)="handleCorrectCombination($event)"></app-attempt>
@@ -38,4 +39,5 @@
    
 </div>
 
-<button (click)="checkAttempt()" [disabled]="!isCombinationReady">check attempt {{attemptNumber}}</button>
+<button (click)="checkAttempt()" [disabled]="!isCombinationReady" [matTooltip]="isCombinationReady ? '' : 'The combination is not ready!'">check attempt: {{attemptNumber}}</button>
+</div>

@@ -6,7 +6,8 @@ import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
 @Component({
   selector: 'app-attempt',
   templateUrl: './attempt.component.html',
-  styleUrls: ['./attempt.component.scss']
+  styleUrls: ['./attempt.component.scss'],
+  standalone: false
 })
 export class AttemptComponent implements OnInit {
   @Input() attemptNumber!: number;
@@ -67,7 +68,7 @@ export class AttemptComponent implements OnInit {
       }
     });
 
-    if (this.clues.every(clue => clue === 'black')) {
+    if (this.clues.length === COMBINATION_NUMBER && this.clues.every(clue => clue === 'black')) {
       this.isCombinationCorrect = true;
       this.emitCorrect.emit(true);
     }

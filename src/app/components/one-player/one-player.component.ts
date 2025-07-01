@@ -8,7 +8,8 @@ import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
 @Component({
   selector: 'app-one-player',
   templateUrl: './one-player.component.html',
-  styleUrls: ['./one-player.component.scss']
+  styleUrls: ['./one-player.component.scss'],
+  standalone: false
 })
 export class OnePlayerComponent implements OnInit {
   attemptNumber: number = 1;

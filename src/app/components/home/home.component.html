@@ -1,4 +1,4 @@
-<div class="home">
+<!-- <div class="home">
     <div class="intro">
         <h1>Master Mind</h1>
         <p>Welcome to Master Mind, the classic board game made digital to play with your friends online.</p>
@@ -12,4 +12,24 @@
     <button (click)="modal.openRules()" class="rules-button">How to play</button>
     <app-rules-modal #modal></app-rules-modal>
 
+</div> -->
+
+<!-- home.component.html -->
+<div class="container">
+  <div class="card">
+    <!-- Main welcome title -->
+    <h1 class="title">Master Mind</h1>
+    
+    <p class="subtitle">The classic board game made digital to play alone or online with your friends.</p>
+
+    <!-- Button linking to join lobby page -->
+    <div class="buttons">
+        <div class="game-types-div">
+            <button routerLink="/one-player" routerLinkActive="active" class="game-type-button single-player-button">One Player</button>
+            <button routerLink="/two-players" routerLinkActive="active" class="game-type-button two-players-button">Two Players</button>
+        </div>
+        <button (click)="modal.openRules()" class="game-type-button rules-button">How to play</button>
+    </div>
+    <app-rules-modal #modal></app-rules-modal>
+  </div>
 </div>

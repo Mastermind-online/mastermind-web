@@ -11,6 +11,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AttemptComponent } from './components/attempt/attempt.component';
 import { TwoPlayersComponent } from './components/two-players/two-players.component';
 import { RulesModalComponent } from './components/rules-modal/rules-modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { RulesModalComponent } from './components/rules-modal/rules-modal.compon
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    DragDropModule
+    DragDropModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
