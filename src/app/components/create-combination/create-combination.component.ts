@@ -11,7 +11,7 @@ import { SocketService } from 'src/app/services/socket.service';
   standalone: false
 })
 export class CreateCombinationComponent implements OnInit {
-  constructor(private readonly router: Router) {}
+  constructor(private readonly socketService: SocketService, private readonly router: Router) {}
 
   colorPool = COLORS;
   secretCombo = [];
@@ -39,6 +39,15 @@ export class CreateCombinationComponent implements OnInit {
   }
 
   ready() {
-    this.router.navigate(['/two-players'])
+    this.socketService.checkRoomExists('testisa').then(exists => {
+      if (exists) {
+        alert('Room already exists.');
+      } else {
+          this.socketService.setRoom('testisa')
+          this.socketService.createRoom()
+          this.socketService.createCombination(this.secretCombo);
+          this.router.navigate(['/two-players']);
+        }
+    });
   }
 }

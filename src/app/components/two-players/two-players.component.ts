@@ -8,16 +8,14 @@ import { SocketService } from 'src/app/services/socket.service';
   standalone: false
 })
 export class TwoPlayersComponent implements OnInit, OnDestroy {
-  room = 'jeje';
-
+  room: string | null = null
   constructor(private readonly socketService: SocketService) { }
 
   ngOnInit(): void {
-    this.socketService.joinRoom(this.room);
-
+    this.room = this.socketService.room;
   }
 
   ngOnDestroy(): void {
-    this.socketService.leaveRoom(this.room);
+    this.socketService.leaveRoom();
   }
 }
