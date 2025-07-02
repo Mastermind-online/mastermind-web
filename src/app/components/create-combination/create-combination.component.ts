@@ -2,6 +2,7 @@ import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { COLORS } from 'src/app/constants/colors';
+import { ColorService } from 'src/app/services/color.service';
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { SocketService } from 'src/app/services/socket.service';
   standalone: false
 })
 export class CreateCombinationComponent implements OnInit {
-  constructor(private readonly socketService: SocketService, private readonly router: Router) {}
+  constructor(private readonly socketService: SocketService, private readonly router: Router, private readonly colorService: ColorService) {}
 
   colorPool = COLORS;
   secretCombo = [];
@@ -46,6 +47,7 @@ export class CreateCombinationComponent implements OnInit {
           this.socketService.setRoom('testisa')
           this.socketService.createRoom()
           this.socketService.createCombination(this.secretCombo);
+          this.colorService.secretCombination = this.secretCombo;
           this.router.navigate(['/two-players']);
         }
     });

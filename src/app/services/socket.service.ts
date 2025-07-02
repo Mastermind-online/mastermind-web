@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class SocketService {
     private socket: Socket;
     room: string | null = null;
+    role: string | null = null;
     private readonly SERVER_URL = 'http://localhost:3001'; // backend URL
 
     constructor() {
@@ -36,16 +37,19 @@ export class SocketService {
     }
 
     createRoom(): void {
+        this.role = 'codeMaster'
         this.socket.emit('createRoom', this.room)
     }
-
+    
     joinRoom(): void {
+        this.role = 'codeBreaker'
         this.socket.emit('joinRoom', this.room);
     }
 
     leaveRoom(): void {
         this.socket.emit('leaveRoom', this.room);
         this.room = null;
+        this.role = null;
     }
 
     createCombination(secretCombination: any) {
@@ -66,7 +70,6 @@ export class SocketService {
                 observer.next(data)
             })
         })
-
     }
 
     // Listen to event

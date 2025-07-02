@@ -20,7 +20,7 @@ export class CodeBreakerComponent {
   clues: Array<string> = [];
   isCombinationCorrect: boolean = false;
   
-  @Input() room!: string;
+  @Input() room!: string | null;
   @ViewChildren(AttemptComponent) attemptComponents: QueryList<AttemptComponent>;
 
   constructor() {}

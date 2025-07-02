@@ -18,6 +18,7 @@ import { CodeMasterComponent } from './components/code-master/code-master.compon
 import { CodeBreakerComponent } from './components/code-breaker/code-breaker.component';
 import { SelectRoleComponent } from './components/select-role/select-role.component';
 import { CreateCombinationComponent } from './components/create-combination/create-combination.component';
+import { MasterAttemptComponent } from './components/master-attempt/master-attempt.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CreateCombinationComponent } from './components/create-combination/crea
     CodeMasterComponent,
     CodeBreakerComponent,
     SelectRoleComponent,
-    CreateCombinationComponent
+    CreateCombinationComponent,
+    MasterAttemptComponent
   ],
   imports: [
     BrowserModule,

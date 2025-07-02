@@ -1,3 +1,8 @@
 <div class="container">
   <h2 class="title" *ngIf="room">Room: {{room}}</h2>
+  <!-- <p class="subtitle">Your are the {{role}}</p> -->
+
+  <app-code-breaker *ngIf="role === 'codeBreaker'" [room]="room"></app-code-breaker>
+  <app-code-master></app-code-master>
+
 </div>

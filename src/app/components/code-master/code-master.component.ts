@@ -2,6 +2,7 @@ import { CdkDragDrop, copyArrayItem, moveItemInArray, transferArrayItem } from '
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { COLORS } from 'src/app/constants/colors';
+import { ColorService } from 'src/app/services/color.service';
 import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
@@ -11,15 +12,15 @@ import { SocketService } from 'src/app/services/socket.service';
   standalone: false
 })
 export class CodeMasterComponent implements OnInit {
-  constructor(private readonly socketService: SocketService, private readonly router: Router) {}
+  constructor(private readonly socketService: SocketService, private readonly router: Router, private readonly colorService: ColorService) {}
 
   attempts: {color: string, container: string}[] = []
   colorPool = COLORS;
   secretCombo = [];
 
-
   ngOnInit(): void {
     this.subscribeToColorChanges();
+    this.secretCombo = this.colorService.secretCombination;
   }
 
   private subscribeToColorChanges() {
@@ -27,6 +28,10 @@ export class CodeMasterComponent implements OnInit {
       this.attempts.push(data)
       console.log('entro: ', data)
     })
+  }
+
+  selectClueColor(color: string) {
+    this.colorService.setClueColor(color);
   }
 
   dropInColorPool(event: CdkDragDrop<string[]>) {

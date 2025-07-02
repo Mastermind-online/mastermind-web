@@ -3,4 +3,28 @@
         <p>color: {{attempt.color}}</p>
         <p>container: {{attempt.container}}</p>
     </div>
+
+    <div style="display: flex; margin-bottom: 30px; gap: 10px;">
+        <div class="circle" style="background-color: white;" (click)="selectClueColor('white')"></div>
+        <div class="circle" style="background-color: black;" (click)="selectClueColor('black')"></div>
+        <div class="circle" style="background-color: transparent;" (click)="selectClueColor('transparent')"></div>
+    </div>
+
+    <app-master-attempt [attemptNumber]="1"></app-master-attempt>
+    <app-master-attempt [attemptNumber]="2"></app-master-attempt>
+    <app-master-attempt [attemptNumber]="3"></app-master-attempt>
+    <app-master-attempt [attemptNumber]="4"></app-master-attempt>
+    <app-master-attempt [attemptNumber]="5"></app-master-attempt>
+    <app-master-attempt [attemptNumber]="6"></app-master-attempt>
+    <app-master-attempt [attemptNumber]="7"></app-master-attempt>
+    <app-master-attempt [attemptNumber]="8"></app-master-attempt>
+    <app-master-attempt [attemptNumber]="9"></app-master-attempt>
+
+    <div class="combination">
+    <div class="circle circle-combination" [ngStyle]="{backgroundColor: secretCombo[0]}"></div>
+    <div class="circle circle-combination" [ngStyle]="{backgroundColor: secretCombo[1]}"></div>
+    <div class="circle circle-combination" [ngStyle]="{backgroundColor: secretCombo[2]}"></div>
+    <div class="circle circle-combination" [ngStyle]="{backgroundColor: secretCombo[3]}"></div>
+    <div class="circle circle-combination" [ngStyle]="{backgroundColor: secretCombo[4]}"></div>
+</div>
 </div>

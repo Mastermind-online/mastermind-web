@@ -12,7 +12,7 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class AttemptComponent implements OnInit {
   @Input() attemptNumber!: number;
-  @Input() room!: string;
+  @Input() room!: string | null;
   @Output() emitEnableCheck: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() emitCorrect: EventEmitter<boolean> = new EventEmitter<boolean>();
 
