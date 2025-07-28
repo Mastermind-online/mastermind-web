@@ -58,10 +58,12 @@ export class CodeBreakerComponent {
   }
 
   checkAttempt() {
-    const index = this.attemptNumber - 1;
-    const attemptToCheck = this.attemptComponents.toArray()[index];
+    if (!this.room?.length) {
+      const index = this.attemptNumber - 1;
+      const attemptToCheck = this.attemptComponents.toArray()[index];
+      attemptToCheck.checkCombination(this.secretCombination);
+    }
 
-    attemptToCheck.checkCombination(this.secretCombination);
     this.attemptNumber++;
     this.dropListConnectedTo.splice(0, 6);
     this.isCombinationReady = false;

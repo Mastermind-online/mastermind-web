@@ -65,8 +65,6 @@ export class SocketService {
     onDroppedColor(): Observable<{ color: string, container: string }> {
         return new Observable((observer) => {
             this.socket.on('receivedDroppedColor', (data) => {
-                console.log('color dropped: ', data.color)
-                console.log('container: ', data.container)
                 observer.next(data)
             })
         })
@@ -77,6 +75,20 @@ export class SocketService {
             this.socket.on('secretCombination', (combination) => {
                 console.log('secret code received:', combination)
                 observer.next(combination)
+            })
+        })
+    }
+
+    sendClues(attemptNumber: number, clues: any) {
+        console.log('entro send clues', attemptNumber, clues)
+        this.socket.emit('sendClues', {attemptNumber, clues})
+    }
+
+    onReceivedClues(): Observable<any> {
+        return new Observable((observer) => {
+            this.socket.on('receivedClues', (data) => {
+                console.log('received clues: ', data.attemptNumber, data.clues)
+                observer.next(data)
             })
         })
     }

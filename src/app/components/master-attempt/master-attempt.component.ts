@@ -17,7 +17,7 @@ export class MasterAttemptComponent implements OnInit {
   @Output() emitEnableCheck: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() emitCorrect: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  colorArrays: any[] = [];
+  colors: any[] = [];
   clues: Array<any> = [{ id: 1, backgroundColor: 'transparent' },
     { id: 2, backgroundColor: 'transparent' },
     { id: 3, backgroundColor: 'transparent' },
@@ -25,76 +25,43 @@ export class MasterAttemptComponent implements OnInit {
     { id: 5, backgroundColor: 'transparent' }];
   isCombinationCorrect: boolean = false;
 
-  divs = [
-    
-    // Add as many divs as you need
-  ];
-
   constructor(private readonly socketService: SocketService, private readonly colorService: ColorService) {}
 
   ngOnInit(): void {
     this.createColorArrays();
+    this.subscribeToColorChanges();
   }
 
   private createColorArrays() {
     const prefix = 'color' + this.attemptNumber;
 
     for (let i = 0; i < COMBINATION_NUMBER; i++) {
-      const colorArrayName = prefix + i;
-      this.colorArrays.push( {name: colorArrayName, value: ['Transparent']});
+      const colorContainerName = prefix + i;
+      this.colors.push( {container: colorContainerName, brackgroundColor: 'Transparent'});
     }
+
+    console.log(this.colors)
+  }
+
+   private subscribeToColorChanges() {
+    this.socketService.onDroppedColor().subscribe((data) => {
+      this.colors.forEach((color) => {
+        console.log('color: ', color)
+        if (color.container === data.container) {
+          console.log('entro')
+          color.backgroundColor = data.color;
+        }
+      })
+      // console.log('entro: ', data)
+    })
   }
 
   setColor(index: number) {
     this.clues[index].backgroundColor = this.colorService.clueColor;
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    console.log('color: ', event.item.data)
-    console.log('containerID: ', event.container.id)
-    if (this.room) {
-      this.socketService.dropColor('mismuelas', event.item.data, event.container.id)
-    }
-    
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.previousIndex);
-    } else {
-      event.container.data[0] = event.item.data;
-      event.container.data.pop();
-      copyArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex,
-      );
-    }
-    
-    this.isCombinationReady();
-  }
-
-  private isCombinationReady() {
-    const myCombination = this.colorArrays.map((colorArray) => colorArray.value[0]);
-    const combinationStatus = new Set(myCombination).size === myCombination.length;
-    
-    this.emitEnableCheck.emit(combinationStatus);
-  }
-
-  checkCombination(secretCombination: string[]) {
-    const myCombination = this.colorArrays.map((colorArray) => colorArray.value[0]);
-
-    myCombination.forEach(color => {
-      if (secretCombination.includes(color)) {
-        if (myCombination.indexOf(color) === secretCombination.indexOf(color)) {
-          this.clues.unshift('black');
-        } else {
-          this.clues.push('white');
-        }
-      }
-    });
-
-    if (this.clues.length === COMBINATION_NUMBER && this.clues.every(clue => clue === 'black')) {
-      this.isCombinationCorrect = true;
-      this.emitCorrect.emit(true);
-    }
+  sendClues() {
+    const mappedClues = this.clues.map((clue) => clue.backgroundColor)
+    this.socketService.sendClues(this.attemptNumber, mappedClues)
   }
 }

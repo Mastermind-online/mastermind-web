@@ -19,16 +19,11 @@ export class CodeMasterComponent implements OnInit {
   secretCombo = [];
 
   ngOnInit(): void {
-    this.subscribeToColorChanges();
+  
     this.secretCombo = this.colorService.secretCombination;
   }
 
-  private subscribeToColorChanges() {
-    this.socketService.onDroppedColor().subscribe((data) => {
-      this.attempts.push(data)
-      console.log('entro: ', data)
-    })
-  }
+ 
 
   selectClueColor(color: string) {
     this.colorService.setClueColor(color);

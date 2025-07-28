@@ -24,6 +24,7 @@ export class AttemptComponent implements OnInit {
 
   ngOnInit(): void {
     this.createColorArrays();
+    this.subscribeToClues();
   }
 
   private createColorArrays() {
@@ -82,5 +83,16 @@ export class AttemptComponent implements OnInit {
       this.isCombinationCorrect = true;
       this.emitCorrect.emit(true);
     }
+  }
+
+  private subscribeToClues() {
+    this.socketService.onReceivedClues().subscribe((data) => {
+      if (this.attemptNumber === data.attemptNumber) {
+        console.log('attemptNumber: ', this.attemptNumber)
+        console.log('received clues: ', data)
+        this.clues = data.clues;
+      }
+      // console.log('entro: ', data)
+    })
   }
 }
