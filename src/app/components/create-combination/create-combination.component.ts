@@ -45,8 +45,8 @@ export class CreateCombinationComponent implements OnInit {
         alert('Room already exists.');
       } else {
           this.socketService.setRoom('testisa')
-          this.socketService.createRoom()
-          this.socketService.createCombination(this.secretCombo);
+          this.socketService.createRoom('testisa', this.secretCombo)
+          // this.socketService.createCombination(this.secretCombo);
           this.colorService.secretCombination = this.secretCombo;
           this.router.navigate(['/two-players']);
         }

@@ -36,9 +36,9 @@ export class SocketService {
         this.room = room;
     }
 
-    createRoom(): void {
+    createRoom(room: string, secretCombination: string[]): void {
         this.role = 'codeMaster'
-        this.socket.emit('createRoom', this.room)
+        this.socket.emit('createRoom', room, secretCombination)
     }
     
     joinRoom(): void {
@@ -52,10 +52,10 @@ export class SocketService {
         this.role = null;
     }
 
-    createCombination(secretCombination: any) {
-        console.log('emit secret combination: ', secretCombination)
-        this.socket.emit('createSecretCombination', secretCombination)
-    }
+    // createCombination(secretCombination: any) {
+    //     console.log('emit secret combination: ', secretCombination)
+    //     this.socket.emit('createSecretCombination', secretCombination)
+    // }
 
     dropColor(room: string, color: string, container: string) {
         console.log('socket service: ', color)
@@ -68,6 +68,15 @@ export class SocketService {
                 console.log('color dropped: ', data.color)
                 console.log('container: ', data.container)
                 observer.next(data)
+            })
+        })
+    }
+
+    onSecretCombinationReceived(): Observable<string[]> {
+        return new Observable((observer) => {
+            this.socket.on('secretCombination', (combination) => {
+                console.log('secret code received:', combination)
+                observer.next(combination)
             })
         })
     }

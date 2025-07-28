@@ -4,6 +4,7 @@ import { COLORS } from 'src/app/constants/colors';
 import { DROP_LIST_CONNECTED } from 'src/app/constants/drop-list-connected-to';
 import { AttemptComponent } from '../attempt/attempt.component';
 import { COMBINATION_NUMBER } from 'src/app/constants/combination-number';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-code-breaker',
@@ -23,10 +24,17 @@ export class CodeBreakerComponent {
   @Input() room!: string | null;
   @ViewChildren(AttemptComponent) attemptComponents: QueryList<AttemptComponent>;
 
-  constructor() {}
+  constructor(private readonly socketService: SocketService) {}
 
   ngOnInit(): void {
-    this.createSecretCombination();
+    if (!this.room?.length) {
+      this.createSecretCombination();
+    } else {
+      this.socketService.onSecretCombinationReceived().subscribe((combination) => {
+      this.secretCombination = combination;
+      console.log('Combination received: ', combination);
+    });
+    }
   }
 
   private createSecretCombination() {
