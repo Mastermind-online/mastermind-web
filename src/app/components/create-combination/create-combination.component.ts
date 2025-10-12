@@ -40,16 +40,23 @@ export class CreateCombinationComponent implements OnInit {
   }
 
   ready() {
-    this.socketService.checkRoomExists('testisa').then(exists => {
+    const roomCode: string = this.getRandomRoomCode();
+
+    this.socketService.checkRoomExists(roomCode).then(exists => {
       if (exists) {
         alert('Room already exists.');
       } else {
-          this.socketService.setRoom('testisa')
-          this.socketService.createRoom('testisa', this.secretCombo)
+          this.socketService.setRoom(roomCode);
+          this.socketService.createRoom(roomCode, this.secretCombo);
           // this.socketService.createCombination(this.secretCombo);
           this.colorService.secretCombination = this.secretCombo;
           this.router.navigate(['/two-players']);
         }
     });
+  }
+  
+  private getRandomRoomCode(): string {
+    return Array.from({ length: 4 }, () => String.fromCharCode(97 + Math.floor(Math.random() * 26))).join('') +
+    Array.from({ length: 4 }, () => Math.floor(Math.random() * 10)).join('');
   }
 }
