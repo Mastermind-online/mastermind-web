@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +11,7 @@ export class SocketService {
     private socket: Socket;
     room: string | null = null;
     role: string | null = null;
-    private readonly SERVER_URL = 'http://localhost:3001'; // backend URL
+    private readonly SERVER_URL = environment.backendUrl; // backend URL
 
     constructor() {
         this.socket = io(this.SERVER_URL);
