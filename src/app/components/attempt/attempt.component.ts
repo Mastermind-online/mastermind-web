@@ -37,10 +37,8 @@ export class AttemptComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log('color: ', event.item.data)
-    console.log('containerID: ', event.container.id)
     if (this.room) {
-      this.socketService.dropColor('mismuelas', event.item.data, event.container.id)
+      this.socketService.dropColor('mismuelas', event.item.data, event.container.id);
     }
     
     if (event.previousContainer === event.container) {
@@ -88,11 +86,11 @@ export class AttemptComponent implements OnInit {
   private subscribeToClues() {
     this.socketService.onReceivedClues().subscribe((data) => {
       if (this.attemptNumber === data.attemptNumber) {
-        console.log('attemptNumber: ', this.attemptNumber)
-        console.log('received clues: ', data)
+        console.log('attemptNumber: ', this.attemptNumber);
+        console.log('received clues: ', data);
         this.clues = data.clues;
       }
       // console.log('entro: ', data)
-    })
+    });
   }
 }

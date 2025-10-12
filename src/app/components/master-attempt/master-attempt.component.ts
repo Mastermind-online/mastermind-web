@@ -39,21 +39,19 @@ export class MasterAttemptComponent implements OnInit {
       const colorContainerName = prefix + i;
       this.colors.push( {container: colorContainerName, brackgroundColor: 'Transparent'});
     }
-
-    console.log(this.colors)
   }
 
    private subscribeToColorChanges() {
     this.socketService.onDroppedColor().subscribe((data) => {
       this.colors.forEach((color) => {
-        console.log('color: ', color)
+        console.log('color: ', color);
         if (color.container === data.container) {
-          console.log('entro')
+          console.log('entro');
           color.backgroundColor = data.color;
         }
-      })
+      });
       // console.log('entro: ', data)
-    })
+    });
   }
 
   setColor(index: number) {
@@ -61,7 +59,7 @@ export class MasterAttemptComponent implements OnInit {
   }
 
   sendClues() {
-    const mappedClues = this.clues.map((clue) => clue.backgroundColor)
-    this.socketService.sendClues(this.attemptNumber, mappedClues)
+    const mappedClues = this.clues.map((clue) => clue.backgroundColor);
+    this.socketService.sendClues(this.attemptNumber, mappedClues);
   }
 }

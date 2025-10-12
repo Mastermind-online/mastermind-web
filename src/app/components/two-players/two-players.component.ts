@@ -8,7 +8,7 @@ import { SocketService } from 'src/app/services/socket.service';
   standalone: false
 })
 export class TwoPlayersComponent implements OnInit, OnDestroy {
-  room: string | null = null
+  room: string | null = null;
   role: string | null = null;
   constructor(private readonly socketService: SocketService) { }
 

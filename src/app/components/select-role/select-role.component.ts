@@ -15,13 +15,11 @@ export class SelectRoleComponent {
   constructor(private readonly socketService: SocketService, private readonly router: Router) { }
 
   joinRoom() {
-    console.log(this.roomId.value)
     const roomIdValue = this.roomId.value;
     // Usage before navigating
     this.socketService.checkRoomExists(roomIdValue).then(exists => {
       if (exists) {
-        console.log('exists')
-          this.socketService.setRoom(roomIdValue)
+          this.socketService.setRoom(roomIdValue);
           this.socketService.joinRoom();
           this.router.navigate(['/two-players']);
         } else {
@@ -31,6 +29,6 @@ export class SelectRoleComponent {
   }
 
   createRoom() {
-    this.router.navigate(['/create-combination'])
+    this.router.navigate(['/create-combination']);
   }
 }

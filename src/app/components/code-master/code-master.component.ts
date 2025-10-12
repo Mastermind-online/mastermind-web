@@ -14,7 +14,7 @@ import { SocketService } from 'src/app/services/socket.service';
 export class CodeMasterComponent implements OnInit {
   constructor(private readonly socketService: SocketService, private readonly router: Router, private readonly colorService: ColorService) {}
 
-  attempts: {color: string, container: string}[] = []
+  attempts: {color: string, container: string}[] = [];
   colorPool = COLORS;
   secretCombo = [];
 
@@ -47,6 +47,6 @@ export class CodeMasterComponent implements OnInit {
   }
 
   ready() {
-    this.router.navigate(['/one-player'])
+    this.router.navigate(['/one-player']);
   }
 }
